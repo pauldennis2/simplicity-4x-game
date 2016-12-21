@@ -1,0 +1,298 @@
+Ideas for Final Project
+
+Team Seeking Algorithm
+
+Some number of hunters are coordinating to chase down their prey - they could be hungry velociraptors after a helpless scientist, for example. They're in some kind of structure - a graph, a maze, etc. The hunters can be limited in action; maybe they can 'Check In On Radio' but there's a risk they'll be heard. Maybe they can set traps to slow the prey. Write bots try to capture the prey as quickly/reliably as possible. 
+
+Space 4x Game (Modeled on Ascendancy)
+
+(This also could feature writing an AI but it's a vastly more complex problem)
+
+Simulate a 4X Style game (like Civilization, or Master of Orion, or Ascendancy). Most parts of the game would be much simpler than a full game.
+
+Planet Management:
+Planets are managed by a governor. You tell the governor what to focus on based on the following categories:
+
+Wealth/Trade Goods
+Food/Growth (could be 2 separate areas)
+Science
+Producing ship parts
+Morale?
+Planet Defenses?
+Highways?
+
+But the Governor can be a rogue governor, and change your priorities around to match his own interests. (Extension: you could have a pool of governors with different strengths and weaknesses, and manage them)
+
+Building ships: all your planets work together to produce ship parts. These parts are then accumulated at a shipyard (Do they have to be shipped? does that cost money? Can you decide where the shipyard is?) You just decide your production queue and your planets will work toward it.
+
+Build highways! Like an automated version of the highways you can build in Ascendancy with Gateships.
+
+Languages: no fucking Universal translator. When you first meet a new race you don't speak each other's language at all. You can transmit info about your language to them but the receiving party may or may not open the files - what if they contain some sort of virus after all? Also, if you transmit information to them they might learn things about you you don't want them to. Still, if you want to make first contact it's a necessary risk. After exchanging info, you can start to learn each other's language. If you're able to do this you can eventually train linguists/cultural advisors who are experts, who can advise spies, and in any case you will slowly gain access - if you trade and interact. (Huge area, but all an Extension)
+
+Basic Ship Combat:
+
+I really want there to be multiple ship sizes; at least 2 in the base verion, say a Fighter and a Destroyer. Class overview:
+
+Fighter - a small fightercraft not much larger than an F-22. Can have basic shields. Possible limitations on whether it can travel long distances by itself. (Can't go through Space Tunnels for example)
+
+Destroyer - Small ship, but much bigger than a fighter (Has 2 docking ports to carry fighters with it through Space Tunnels)
+
+Cruiser - a medium sized ship, somewhat larger than a Ticonderoga-class cruiser.
+
+Battleship - A large combat ship. Able to carry bigger shields, guns, etc. Can internally carry up to 2 fighters and carry a large complement of guns.
+
+Capitol Ship - A massive carrier ship, capable of carry up to 5 fighters internally with external berths for 9 more (14 total capacity). 
+
+
+Shields:
+
+Basic Shields - Can be equipped on any ship. Strength somewhat proportional to size (fighters have the weakest shields). Bigger shields more subject to piercing? 
+
+Shield Upgrade: Interlocking Shields - a grid of interlocking fields that protect each other. Consumes a lot of power, but much harder to break through for conventional weapons. Only available on Cruiser/Battleship or higher. Squares shield power and triples power consumption.
+
+Shield Upgrade: Regenerative Shields - shields will regenerate 6% every turn (normal rate is 1%).
+
+Weapons:
+
+Basic Small Energy Weapon - Small weapon slot. Good against ships; completely ineffectual vs planets. Limited by ship power?
+Basic Large Energy Weapon - Large weapon slot. Strong against ships; does some damage to planets. Limited by ship power?
+
+Basic Small Explosive Weapon - Small weapon slot. Strong early against ships. Does some damage to planets. Limited ammo?
+Basic Large Explosive Weapon - Large weapon slot. Can easily miss smaller ships (50% chance Fighter evades, 20% Destroyer evades, 15% Cruiser evades). Most effective vs Battleships and Capitol Ships.
+
+Basic Small Bomb - Small weapon slot. Effective early vs planets. Limited ammo.
+Basic Large Bomb - Large Weapon Slot. Extremely effective vs planets. Of limited use vs anything smaller than a Battleship. 
+
+Energy Weapon Upgrade - Piercing. Does extra damage to shields. + More damage to large shields. + More damage to interlocking shields
+Energy Weapon Upgrade - Super Piercing. Does even more damage to shields. + More damage to large shields. Almost completely negates interlocking shields. 
+Energy Weapon Upgrade - Defensive Auto-Targeting System. Has a chance to shoot down incoming Explosives/Bombs. 20% chance to evade completely, 20% chance of half damage.
+
+Explosive Weapon Upgrade - Advanced Targeting and Guidance Systems (ATGS). Reduce miss chance to (25% Fighter, 5% Destroyer, 5% Cruiser).
+Explosive Weapon Upgrade - Concentrated payload. Extra damage.
+
+Bomb Upgrade - Plague. Causes extra civilian deaths on planet
+
+Generator Upgrade 1 - Increase power by 60%.
+Generator Upgrade 2 - Increase power by 80%. (Fully multiplicative for a total of 288% increase)
+
+Other Upgrades: (Possibly these are modules, possibly upgrades)
+Security module
+
+
+
+
+
+Start of the game:
+
+You are a small <whatever>. An explorer has just come back from a journey through a Space Tunnel, a new type of travel discovered recently. He has found a habitable planet. He also reports there are other routes leading out of that system. Will you build ships and colonize the stars?
+
+
+What ships have:
+
+Stats can be elevated with technology or spending extra time on creating the ship (i.e., you can add extra slots but they'll be increasingly super-expensive, and if you try to do too much maybe there's a chance your whole project will collapse and you'll be left with nothing.
+
+Basic Description of Role:
+
+Fighter - the first ship you can build (along with colony ship). They will combine with planetary defenses to defend you in the early game. A colony ship can and should bring up to 1 Fighter with it. Otherwise fighters can't travel by themselves (by default). After early game, they maintain their usefullness by upgrades granting extra slots, or trading up slots (trade both small weapon slots for one big), and by being in Repair Bays of the big ships.
+
+Destroyer - First warship that can travel by itself, potentially bringing along destroyers. Meant to be outclassed by the Cruiser chassis when it's discovered.
+
+Cruiser - First main warship. First available upgrade slot, this will be the main warship for the early-mid to mid game, until it is possible to build battleships.
+
+Battleships - Ship of the line, able to carry 2 Fighters and a large complement of guns. Basically an early capitol ship, it can exchange fire and hang in against a small fleet of smaller ships.
+
+Capitol Ship - Dominant, final ship, equivalent to an aircraft carrier. Room for 5 internal fighters and tons of upgrades and big guns. Can only be effectively countered by well-designed battleships, equivalent enemy capitol ships, or swarms of smaller ship.
+
+Weapon Type:
+
+Energy Weapons: Depending matchup can be
+Explosive Weapons: 
+Bombs: Strong vs planets, fairly weak vs small ships. Depending on type can be good against larger ships.
+
+Ships have:
+Health
+Shield Strength
+
+
+
+Name
+	Number of Berths: ships other than fighters have ports that Fighters can lock into for travel
+	Number of Small Weapon Slots:
+	Number of Large Weapon Slots:
+	Number and Type of Upgrade slots:
+		Generator Upgrade:
+		Shield Upgrade:
+		Weapon Upgrade:
+		Wildcard Upgrade:
+	Number of Special slots:
+	Number of Fighters can carry: different from berths. Starting with battleships they can have internal fighters
+	Acceleration/Maneuverability:
+	Health:
+
+These are the basic "chassis" parts. Things could always be added on top.	
+
+Fighter:
+	Fighter Berths: 0 Berths
+	
+	Small Weapons: 2
+	Large Weapons: 0
+	Upgrade Slots: 0
+	Special Slots: 1
+	Fighter Slots: 0
+	Acceleration/Maneuverability: V High
+	Health: 25
+	Base Shield Strength:
+
+	Notes: Cannot travel through Space Tunnels.
+
+Destroyer:
+	Fighter Berths: 2 Berths
+	
+	Small Weapons: 2
+	Large Weapons: 1
+	Upgrade Slots: 0
+	Special Slots: 2
+	Fighter Slots: 0
+	Acceleration/Maneuverability: High
+	Health: 100
+
+	Notes: 
+
+Cruiser:
+	Fighter Berths: 3 Berths
+	
+	Small Weapons: 5
+	Large Weapons: 2
+	Upgrade Slots: 1 Wildcard
+	Special Slots: 3
+	Fighter Slots: 0
+	Acceleration/Maneuverability: High
+	Health: 160
+
+	Notes: 
+
+Battleship:
+	Fighter Berths: 5 Berths
+	
+	Small Weapons: 5
+	Large Weapons: 4
+	Upgrade Slots: 2 Wildcard
+	Special Slots: 5
+	Fighter Slots: 2
+	Acceleration/Maneuverability: Medium Low
+	Health: 250
+
+	Notes: 
+
+Capital Ship:
+	Fighter Berths: 9 Berths
+	
+	Small Weapons: 6
+	Large Weapons: 7
+	Upgrade Slots: 1 Shield, 1 Generator, 1 Weapon, 2 Wildcard
+	Special Slots: 8
+	Fighter Slots: 5
+	Acceleration/Maneuverability: Very Low
+	Health: 400
+
+	Notes: 
+
+Specials:
+
+Extended Fuel Tanks/Extra Rations
+(Later game) Miniaturized Necklin Rods for fighters
+Stealth - provides stronger camouflage for small ships. Larger ships only get partial benefit.
+Scientific Module - encourage exploration. This section of the ship devoted to science. Such Starfleet, very wow.
+Scounting Module - scan planets as you pass them and relay this information. (Detailed scans of all planets, not just guesses)
+Diplomatic Module - maybe this is a larger size; basically room for a diplomatic corps, to host peace talks, receive dignitaries, etc.
+Security Module (Counter-Spy) - this represents the ability to defeat attempts at enemy spywork, like sneaking onto your ship and stealing files, or sabotaging things
+Security Module (Marine) - this represents the ability to repel armed boarding parties and the like.
+Entertainment Module - If you want to keep your crew happy during long deployments you'll need one of these. Otherwise, morale will be terrible! (It makes a difference if they are deployed abroad or at home. If deployed abroad, your crew will gradually get homesick and morale will drop. This is separate from war weariness)
+Medical Module - keep people healthy? limit casualties? __reduce war weariness__?
+Fighter Repair Module - Equipped in your Fighter Bay; can dramatically speed up repairs of damaged fighters.
+Remote Pilot Module - For a fighter, allow to be piloted remotely (no crew, no war weariness loss).
+Load With Bombs - requires Remote Pilot module as well. Turns into a very powerful explosive.
+Tactics Module - helps in combat. This might also be an upgrade slot
+Concussive Shielding - Reduce damage from bombs by 60%. Reduce damage from explosives 30%.
+Hard Shield Module - Immune to shield piercing. Maybe an upgrade slot/maybe only available to battleships + on lategame?
+Fast Maneuvering System FMS - increase chance to dodge missiles, maybe other things
+Extra Fast Lane Tunneler
+Ablative Armor - might be an upgrade slot. Reduced any damage that penatrates shields.
+Repair Module - repairs hull damage (in combat/not in combat)
+
+War Weariness:
+Depends on:
+Race?
+Government?
+Whether you're winning?
+
+Basically, your crews' morale will start to drop when they're constantly at war. If you're mostly winning the war, and losses on your side are minimal, so are the effects. It also matters if you're the attacker or not. Crews do not get weary of defensive wars nearly as fast (though it will still depend on your losses - no one likes seeing friends die.) Some races maybe more or less bloodthirsty/war happy. If a nation is super bloodthirsty they can experience peace weariness (a droop in productivity due to not meeting their bloodthirst). 
+
+
+Building the Map
+
+How many (usable) planets are in each solar system? Can be a function of game settings. If it's set lower, the average number of usable planets can be very low, like maybe 0.25 (one in every four systems). Meaning that your settlements will be further apart and you'll need to rely on planetary defenses, or good highways to move troops.
+
+Extensions for Planets:
+
+Resources: Planets can have rare resources, like madeupium or notexistium, or iron. These can be used in chassis designs
+
+Development of Planets (Extension): Planets could have a few simple Civ-style builds (i.e. built once per planet) like military academy, or trade network.
+
+Or Planets have "wonder style" projects they can work on. These are sort of like Small Wonders in Civ3. 
+	Military Academy - all crews start with +50% more experience. Ships that spend a turn in this system gain 1 xp?
+	Grand Consul Strategica - all crews start with +50% more experience. Ships that spend a turn in this system gain 2xp?
+	CIA - All spies start with +1 ability.
+	Tal Shiar - All spies start with additional +1 ability.
+	Science Thing -
+	Engineering Thing - Construct parts for <Ship Type> faster.
+	ShipBuilding upgrade - add slots. 
+
+Race Perks:
+	Spy-y. Start with CIA Completed. Gain bonus to spy rolls? Penalty to diplomacy?
+	Subterranean - Extra Housing
+	Aquatic - Bonus growth based on wetness of planet
+
+Planets have:
+	Wetness/Dryness - affects food generation, max pop?
+	Size - affects max pop
+	Mineral level - affects production
+
+Designing A Race:
+
+Bloodthirst Slider - can go from Hippie Peaceniks to Bloodthirsty Monsters.
+
+Hippie Peaceniks have HUGE problems with war weariness, and can really only fight defensive wars. The love peace though and get bonuses when at peace.
+
+Peaceful - Still peaceful but not as peaceful as Hippies.
+
+Neutral - Does not suffer peace weariness. Suffers some war weariness depending on losses.
+
+Warlike - Gradually suffers some peace weariness. War weariness is nil in successful wars, and minor even in unsuccessful wars.
+
+Bloodthirsty Monsters - Suffers significant peace weariness. War weariness is nil except in the most unsuccessful of wars.
+
+Basic Game Concept: You can build Colonizers, Fighters, and Destroyers. There's 1-2 systems to settle with no hostile presence, and 1 hostile system. When you arrive in the hostile system you can tell the computer how many ships you want to fight.
+
+Starter Ship Combat:
+Each fleet alternates ships (biggest to smallest) until all ships have gone. fleet with more ships takes extra turns at the end for any ships that haven't gone. Fleet with more ships goes first. Each ship fires its best weapon at the biggest target.
+
+Example:
+Fleet A: Cruiser, Destroyer, 2 Fighters
+Fleet B: Destroyer, Fighter
+
+Turn 1: CruiserA fires on DestroyerB, DestroyerB fires on CruiserA.
+DestoroyerA fires on DestroyerB. FighterB fires on CruiserA. Fighter1A fires on DestroyerB. Fighter2A fires on DestroyerB. (If a target dies, just move to next)
+
+
+Overview of Basic Starter Concept
+You start with 1 Planet with 6 population, and 1 fighter. You can assign production of your planet between the following goals:
+
+Research (only one tech available - allows Destroyers and Large Basic Energy Weapon)
+Production
+Growth
+
+Things in the production pool:
+Fighter
+Colonizer
+Destroyer (with tech)
