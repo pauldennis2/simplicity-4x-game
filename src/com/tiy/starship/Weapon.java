@@ -8,9 +8,33 @@ package com.tiy.starship;
 public /*abstract*/ class Weapon extends ShipTech {
 
     private int damage;
-    private WeaponType type;
+    private WeaponClass type;
+    private int shots;
 
-    public Weapon (int damage, boolean large) {
+    public static final int DEFAULT_NUM_MISSILES = 3;
 
+    public Weapon (int damage, WeaponClass type, boolean large) {
+        this.damage = damage;
+        this.type = type;
+        if (type == WeaponClass.BEAM) {
+            shots = -1;
+        }
+        if (type == WeaponClass.MISSILE) {
+            shots = 3;
+        }
+    }
+
+    //Note: this is NOT an accessor method. It actually "fires a shot" returning the
+    //damage to be applied to the enemy ship
+    public int getFiredWeaponDamage () {
+        if (shots == -1) {
+            //Beam weapon, simply return damage
+            return damage;
+        }
+        if (shots > 0) {
+            shots--;
+            return damage;
+        }
+        return 0;
     }
 }

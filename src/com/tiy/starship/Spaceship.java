@@ -26,7 +26,8 @@ public abstract class Spaceship {
     private StarSystem immediateDestination;
     private StarSystem finalDestination; //for later
     private int turnsToDestination;
-    private StarSystem currentSystem;
+
+    StarSystem currentSystem;
 
     private boolean inTunnel;
 
@@ -97,6 +98,10 @@ public abstract class Spaceship {
 
     public List<Fighter> getAttachedFighters () {
         return attachedFighters;
+    }
+
+    public void setWeapons (List<Weapon> weaponList) {
+        this.weapons = weaponList;
     }
 
 }

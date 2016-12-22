@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 /**
  * Created by erronius on 12/20/2016.
  */
-public class SpaceshipTunnelTest {
+public class SpaceshipTunnelAndFighterAttachTest {
 
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
@@ -75,15 +75,37 @@ public class SpaceshipTunnelTest {
     }
 
     @Test
-    public void testFighterAttach () {
+    public void testWrongFunctionFighterAttach () {
+        //This function should not be called externally (internal call in fighter.attachTo(Spaceship)
         assertEquals(true, destrier.attach(charlie));
         assertEquals(true, destrier.attach(new Fighter(null)));
         assertEquals(false, destrier.attach(new Fighter(null)));
     }
 
     @Test
+    public void testWrongSystemFighterAttach () throws IllegalMoveException {
+        expectedException.expect(IllegalMoveException.class);
+        new Fighter(uncon1).attachTo(destrier);
+    }
+
+    @Test
+    public void testTooManyFightersAttach () throws IllegalMoveException {
+        new Fighter(startSystem).attachTo(destrier);
+        new Fighter(startSystem).attachTo(destrier);
+        expectedException.expect(IllegalMoveException.class);
+        new Fighter(startSystem).attachTo(destrier);
+    }
+
+    @Test
     public void testStarTunnelWithAttachedFighters () throws IllegalMoveException {
-        destrier.attach(charlie);
+        charlie.attachTo(destrier);
+        assertEquals(charlie.getCurrentSystem(), destrier.getCurrentSystem());
+        destrier.enterTunnel(tunnel);
+        assertEquals(null, charlie.getCurrentSystem());
+        destrier.moveToDestination();
+        destrier.moveToDestination();
+        destrier.moveToDestination();
+        assertEquals(endSystem, charlie.getCurrentSystem());
     }
 
 }

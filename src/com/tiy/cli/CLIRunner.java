@@ -7,6 +7,7 @@ import com.tiy.starsys.StarSystemGraph;
  * Created by erronius on 12/20/2016.
  */
 public class CLIRunner {
+
     public static void main(String[] args) {
         new CLIRunner().sandbox();
     }

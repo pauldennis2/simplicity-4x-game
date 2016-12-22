@@ -19,13 +19,16 @@ public class Player {
 
     int totalResearch;
 
-    public Player (StarSystem homeSystem) {
+    String name;
+
+    public Player (StarSystem homeSystem, String name) {
         planets = new ArrayList<>();
         ships = new ArrayList<>();
         shipyard = new Shipyard(homeSystem);
 
-        planets.add(homeSystem.getPlanets().get(0));
+        planets.add(homeSystem.getPlanets().get(0));//BAD (we shoudln't be assuming this. works for now) todo fix
         totalResearch = 0;
+        this.name = name;
     }
 
     public void getResearchAndProductionFromPlanets () {
@@ -41,5 +44,13 @@ public class Player {
 
     public void moveShips () {
 
+    }
+
+    public String getName () {
+        return name;
+    }
+
+    public void removeShip (Spaceship ship) {
+        ships.remove(ship);
     }
 }

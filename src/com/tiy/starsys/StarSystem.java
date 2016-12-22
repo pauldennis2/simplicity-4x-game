@@ -25,7 +25,7 @@ public class StarSystem {
         this.name = name;
         planets = new ArrayList<>();
         tunnels = new ArrayList<>();
-        planets.add(new Planet(name + " " + ROMAN_NUMERALS[0], DEFAULT_PLANET_SIZE, true));
+        planets.add(new Planet(name + " " + ROMAN_NUMERALS[0], DEFAULT_PLANET_SIZE, true, this));
     }
 
     public StarSystem (String name, Random random) {
@@ -37,7 +37,7 @@ public class StarSystem {
         for (int index = 0; index < numPlanets; index++) {
             boolean habitable = random.nextBoolean();
             int size = random.nextInt(3);
-            planets.add(new Planet(name + " " + ROMAN_NUMERALS[index], DEFAULT_PLANET_SIZE + size, habitable));
+            planets.add(new Planet(name + " " + ROMAN_NUMERALS[index], DEFAULT_PLANET_SIZE + size, habitable, this));
         }
     }
 

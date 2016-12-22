@@ -22,7 +22,9 @@ public class Planet {
     private double partialResearch;
     private double partialProduction;
 
-    public Planet (String name, int size, boolean habitable) {
+    private StarSystem system;
+
+    public Planet (String name, int size, boolean habitable, StarSystem system) {
         this.name = name;
         this.size = size;
         this.habitable = habitable;
@@ -30,6 +32,7 @@ public class Planet {
         population = 0;
         researchPct = 0.4f;
         productionPct = 0.6f;
+        this.system = system;
     }
 
     @Override
@@ -42,6 +45,14 @@ public class Planet {
         }
         response += population + "/" + size;
         return response;
+    }
+
+    public String getOwner () {
+        return owner;
+    }
+
+    public StarSystem getSystem () {
+        return system;
     }
 
     public void setPopulation (int pop) {
@@ -78,5 +89,9 @@ public class Planet {
 
     public float getProductionPct () {
         return productionPct;
+    }
+
+    public int getPopulation () {
+        return population;
     }
 }
