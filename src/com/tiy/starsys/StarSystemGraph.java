@@ -1,5 +1,7 @@
 package com.tiy.starsys;
 
+import com.tiy.cli.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +30,8 @@ public class StarSystemGraph {
         scarySystem.addTunnel(emptyToScary);
 
         Planet homePlanet = homeSystem.getPlanets().get(0);
-        homePlanet.setOwner("Player");
-        homePlanet.setPopulation(4);
-
+        homePlanet.setOwner(new Player(homeSystem, "Tester"));
+        homePlanet.setPopulation(6);
     }
 
     public String toString () {

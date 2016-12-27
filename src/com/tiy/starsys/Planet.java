@@ -2,6 +2,7 @@ package com.tiy.starsys;
 
 import com.sun.xml.internal.ws.policy.AssertionSet;
 import com.tiy.ImproperFunctionInputException;
+import com.tiy.cli.Player;
 
 /**
  * Created by erronius on 12/20/2016.
@@ -14,7 +15,7 @@ public class Planet {
     private int population;
     private String name;
     //private Race owner;
-    private String owner;
+    private Player owner;
 
     private float researchPct;
     private float productionPct;
@@ -28,7 +29,7 @@ public class Planet {
         this.name = name;
         this.size = size;
         this.habitable = habitable;
-        owner = "none";
+        owner = null;
         population = 0;
         researchPct = 0.4f;
         productionPct = 0.6f;
@@ -47,7 +48,7 @@ public class Planet {
         return response;
     }
 
-    public String getOwner () {
+    public Player getOwner () {
         return owner;
     }
 
@@ -59,7 +60,7 @@ public class Planet {
         population = pop;
     }
 
-    public void setOwner (String owner) {
+    public void setOwner (Player owner) {
         this.owner = owner;
     }
 

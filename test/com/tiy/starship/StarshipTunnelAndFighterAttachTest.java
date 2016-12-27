@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 /**
  * Created by erronius on 12/20/2016.
  */
-public class SpaceshipTunnelAndFighterAttachTest {
+public class StarshipTunnelAndFighterAttachTest {
 
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
@@ -76,7 +76,7 @@ public class SpaceshipTunnelAndFighterAttachTest {
 
     @Test
     public void testWrongFunctionFighterAttach () {
-        //This function should not be called externally (internal call in fighter.attachTo(Spaceship)
+        //This function should not be called externally (internal call in fighter.attachTo(Starship)
         assertEquals(true, destrier.attach(charlie));
         assertEquals(true, destrier.attach(new Fighter(null)));
         assertEquals(false, destrier.attach(new Fighter(null)));

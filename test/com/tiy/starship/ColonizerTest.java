@@ -48,7 +48,7 @@ public class ColonizerTest {
     public void testBasicColonization() throws IllegalMoveException {
         colonizer = new Colonizer(systemToColonize, player);
         colonizer.createColony(planetToColonize);
-        assertEquals(player.getName(), planetToColonize.getOwner());
+        assertEquals(player, planetToColonize.getOwner());
         assertEquals(Colonizer.POPULATION, planetToColonize.getPopulation());
         //add test to make sure that the colonizer has been used up
 
@@ -69,6 +69,6 @@ public class ColonizerTest {
         colonizer.moveToDestination();
         colonizer.moveToDestination();
         colonizer.createColony(planetToColonize);
-        assertEquals(player.getName(), planetToColonize.getOwner());
+        assertEquals(player, planetToColonize.getOwner());
     }
 }

@@ -8,9 +8,9 @@ public class Project {
     private int requiredProduction;
     private int currentProduction;
 
-    private Spaceship goal;
+    private Starship goal;
 
-    public Project (int requiredProduction, Spaceship goal) {
+    public Project (int requiredProduction, Starship goal) {
         this.requiredProduction = requiredProduction;
         this.goal = goal;
         currentProduction = 0;

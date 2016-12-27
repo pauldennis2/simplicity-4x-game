@@ -5,23 +5,27 @@ import com.tiy.cli.StarshipSetup;
 import com.tiy.starsys.SpaceTunnel;
 import com.tiy.starsys.StarSystem;
 
-import java.util.List;
-
 /**
  * Created by erronius on 12/20/2016.
  */
-public class Fighter extends Spaceship {
+public class Fighter extends Starship {
 
-    Spaceship attachedTo;
+    Starship attachedTo;
     boolean attached;
 
     public Fighter (StarSystem location) {
         super(location);
+        shield = Shield.getTemplateShield(ShipChassis.FIGHTER);
+        generator = Generator.getTemplateGenerator(ShipChassis.FIGHTER);
+        health = 30;
     }
 
     public Fighter (StarSystem location, StarshipSetup setup) {
         super(location);
         this.setWeapons(setup.getWeaponList());
+        shield = Shield.getTemplateShield(ShipChassis.FIGHTER);
+        generator = Generator.getTemplateGenerator(ShipChassis.FIGHTER);
+        health = 30;
     }
 
     @Override
@@ -29,17 +33,17 @@ public class Fighter extends Spaceship {
         throw new IllegalMoveException("Fighters can't enter tunnels");
     }
 
-    public void attachTo (Spaceship spaceship) throws IllegalMoveException {
-        int berths = spaceship.fighterBerths;
+    public void attachTo (Starship starship) throws IllegalMoveException {
+        int berths = starship.fighterBerths;
 
-        if (!this.getCurrentSystem().equals(spaceship.getCurrentSystem())) {
+        if (!this.getCurrentSystem().equals(starship.getCurrentSystem())) {
             throw new IllegalMoveException("Cannot attach - not in same system");
         }
 
-        if (berths > spaceship.getAttachedFighters().size()) {
+        if (berths > starship.getAttachedFighters().size()) {
             //Room at the inn
-            spaceship.attach(this);
-            attachedTo = spaceship;
+            starship.attach(this);
+            attachedTo = starship;
             attached = true;
         } else {
             throw new IllegalMoveException("Cannot attach; no berths available.");
@@ -52,7 +56,6 @@ public class Fighter extends Spaceship {
         if (attached) {
             return attachedTo.getCurrentSystem();
         }
-        //return this.getCurrentSystem();
         return this.currentSystem;
     }
 

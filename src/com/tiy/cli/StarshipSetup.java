@@ -1,9 +1,6 @@
 package com.tiy.cli;
 
-import com.tiy.starship.Shield;
-import com.tiy.starship.ShipChassis;
-import com.tiy.starship.Weapon;
-import com.tiy.starship.WeaponClass;
+import com.tiy.starship.*;
 import com.tiy.starsys.StarSystem;
 
 import java.util.ArrayList;
@@ -39,6 +36,7 @@ public class StarshipSetup {
             weaponList.add(smallMsilWeapon);
             weaponList.add(largeBeamWeapon);
         }
+
     }
 
     public List<Weapon> getWeaponList () {

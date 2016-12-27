@@ -8,7 +8,7 @@ import com.tiy.starsys.StarSystem;
 /**
  * Created by erronius on 12/21/2016.
  */
-public class Colonizer extends Spaceship {
+public class Colonizer extends Starship {
 
     public static final int POPULATION = 2;
     public Player owner;
@@ -23,11 +23,11 @@ public class Colonizer extends Spaceship {
         if (!planet.getSystem().equals(this.currentSystem)) {
             throw new IllegalMoveException("Cannot colonize planet. Not in system.");
         }
-        if (!planet.getOwner().equals("none")) {
+        if (!(planet.getOwner() == null)) {
             throw new IllegalMoveException("Cannot colonize planet. Already owned.");
         }
         //check for habitability, etc
-        planet.setOwner(owner.getName());
+        planet.setOwner(owner);
         planet.setPopulation(POPULATION);
         owner.removeShip(this);
     }

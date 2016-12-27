@@ -1,9 +1,8 @@
 package com.tiy.cli;
 
 import com.tiy.starship.Shipyard;
-import com.tiy.starship.Spaceship;
+import com.tiy.starship.Starship;
 import com.tiy.starsys.Planet;
-import com.tiy.starsys.SpaceTunnel;
 import com.tiy.starsys.StarSystem;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public class Player {
     List<Planet> planets;
-    List<Spaceship> ships;
+    List<Starship> ships;
     Shipyard shipyard;
 
     int totalResearch;
@@ -29,6 +28,10 @@ public class Player {
         planets.add(homeSystem.getPlanets().get(0));//BAD (we shoudln't be assuming this. works for now) todo fix
         totalResearch = 0;
         this.name = name;
+    }
+
+    public void addShip (Starship starship) {
+        ships.add(starship);
     }
 
     public void getResearchAndProductionFromPlanets () {
@@ -50,7 +53,7 @@ public class Player {
         return name;
     }
 
-    public void removeShip (Spaceship ship) {
+    public void removeShip (Starship ship) {
         ships.remove(ship);
     }
 }

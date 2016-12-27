@@ -30,5 +30,32 @@ public enum ShipChassis {
         this.health = health;
         this.shieldStrength = shieldStrength;
     }
-    //getters
+
+    public int getSmallWeaponSlots() {
+        return smallWeaponSlots;
+    }
+
+    public int getLargeWeaponSlots() {
+        return largeWeaponSlots;
+    }
+
+    public int getFighterBerths() {
+        return fighterBerths;
+    }
+
+    public int getUpgradeSlots() {
+        return upgradeSlots;
+    }
+
+    public int getFighterSlots() {
+        return fighterSlots;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getShieldStrength() {
+        return shieldStrength;
+    }
 }

@@ -37,4 +37,8 @@ public /*abstract*/ class Weapon extends ShipTech {
         }
         return 0;
     }
+
+    public WeaponClass getWeaponClass () {
+        return type;
+    }
 }

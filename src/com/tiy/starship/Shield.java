@@ -11,13 +11,18 @@ public class Shield {
     private int maxShieldHealth;
     private int regenRate;
 
+    private boolean shieldsUp;
+
     public Shield(ShieldType type, int maxDamageAbsorb, int shieldHealth, int regenRate) {
         this.type = type;
         this.maxDamageAbsorb = maxDamageAbsorb;
         this.maxShieldHealth = shieldHealth;
         this.shieldHealth = maxShieldHealth;
         this.regenRate = regenRate;
+
+        shieldsUp = true;
     }
+
 
     /**
      *
@@ -25,17 +30,55 @@ public class Shield {
      * @return amount not absorbed to be taken by ship/armor
      */
     public int takeDamage (int damageAmount) {
+        //relevant nums: maxDamageAbsorb, shieldHealth
+        if (shieldHealth >= damageAmount) {
+            if (damageAmount <= maxDamageAbsorb) {
+                shieldHealth -= damageAmount;
+                return 0;
+            } else { //damageAmount > maxAbsorb
+                shieldHealth -= maxDamageAbsorb;
+                return damageAmount - maxDamageAbsorb;
+            }
+        } else { //shieldHealth < damageAmount
+            if (damageAmount <= maxDamageAbsorb) {
+                int returnDamage = damageAmount - shieldHealth;
+                shieldHealth = 0;
+                return returnDamage;
+            } else { //damageAmount > maxDamageAbsorb
+                if (shieldHealth >= maxDamageAbsorb) {
+                    shieldHealth -= maxDamageAbsorb;
+                    return damageAmount - maxDamageAbsorb;
+                } else {
+                    int returnDamage = damageAmount - shieldHealth;
+                    shieldHealth = 0;
+                    return returnDamage;
+                }
+            }
+        }
+        /*
         //We'll allow shieldHealth to dip below 0
         if (damageAmount >= maxDamageAbsorb) {
-            shieldHealth -= maxDamageAbsorb;
-            return damageAmount - maxDamageAbsorb;
+            if (shieldHealth >= maxDamageAbsorb) {
+                shieldHealth -= maxDamageAbsorb;
+                return damageAmount - maxDamageAbsorb;
+            } else { //shieldHealth < maxDamageAbsorb
+                int damageAbsorbed = shieldHealth;
+                shieldHealth = 0;
+                return damageAmount - damageAbsorbed
+            }
         } else {
             shieldHealth -= damageAmount;
         }
         if (shieldHealth < 0){
-            return -shieldHealth;
+            int returnDamage = Math.abs(shieldHealth);
+            shieldHealth = 0;
+            return returnDamage;
         }
-        return 0;
+        return 0;*/
+    }
+
+    public boolean shieldsUp () {
+        return shieldsUp;
     }
 
     //Even though we already know our regen rate, we have to pass in the max power available for shield regen
@@ -94,5 +137,13 @@ public class Shield {
             return new Shield(ShieldType.BASIC, 10, 30, 0);
         }
         return null;
+    }
+
+    public void raiseShields () {
+        shieldsUp = true;
+    }
+
+    public void lowerShields () {
+        shieldsUp = false;
     }
 }

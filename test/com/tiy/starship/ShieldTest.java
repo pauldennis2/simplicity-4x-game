@@ -31,6 +31,16 @@ public class ShieldTest {
     }
 
     @Test
+    public void testDrainedShieldDamageAbsorption () {
+        shield = Shield.getTemplateShield(ShipChassis.FIGHTER); //10, 30
+        shield.takeDamage(10);
+        shield.takeDamage(10);
+        shield.takeDamage(10);
+        int returnedDamage = shield.takeDamage(15);
+        assertEquals(15, returnedDamage);
+    }
+
+    @Test
     public void testBasicShieldRegen () {
         shield = Shield.getTemplateShield(ShipChassis.DESTROYER);
         shield.takeDamage(20);
