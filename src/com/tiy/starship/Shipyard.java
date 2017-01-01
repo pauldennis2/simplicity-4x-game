@@ -1,5 +1,7 @@
 package com.tiy.starship;
 
+import com.tiy.cli.Player;
+import com.tiy.starsys.Location;
 import com.tiy.starsys.StarSystem;
 
 import java.util.ArrayList;
@@ -8,32 +10,44 @@ import java.util.List;
 /**
  * Created by erronius on 12/20/2016.
  */
-public class Shipyard {
+public class Shipyard extends Location {
 
-    private StarSystem location;
+    private StarSystem system;
     private List<Project> projects;
     private Project currentProject;
     private int surplusProduction;
+    private Player owner;
 
-    public Shipyard (StarSystem location) {
-        this.location = location;
+    private String name;
+
+    public Shipyard (StarSystem system, Player owner) {
+        this.system = system;
         projects = new ArrayList<>();
+        this.owner = owner;
+        name = "Utopia Planitia";
     }
 
-    public void addProjectTopPrio (Project project) {
-        currentProject = project;
+    public void addProject(Project project) {
         projects.add(project);
+        if (currentProject == null) {
+            currentProject = project;
+        }
     }
 
     public void addProductionToCurrentProject (int production) {
-        int surplusReturned = currentProject.addProduction(production);
-        if (surplusReturned > 0) {
-            surplusProduction += surplusReturned;
-            projects.remove(currentProject);
-            if (projects.size() > 0) {
-                currentProject = projects.get(0); //get the next project, arbitrarily at the beginning
-            } else {
-                currentProject = null;
+        if (currentProject == null) {
+            System.out.println("Current project is null. Please give me something to do.");
+            surplusProduction += production;
+        } else {
+            int surplusReturned = currentProject.addProduction(production);
+            if (surplusReturned > 0) { //Project is coded to return at least 1 if production completes
+                surplusProduction += surplusReturned;
+                projects.remove(currentProject);
+                if (projects.size() > 0) {
+                    currentProject = projects.get(0); //get the next project, arbitrarily at the beginning
+                } else {
+                    currentProject = null;
+                }
             }
         }
     }
@@ -44,5 +58,26 @@ public class Shipyard {
 
     public Project getCurrentProject () {
         return currentProject;
+    }
+
+    public Player getOwner () {
+        return owner;
+    }
+
+    public StarSystem getSystem () {
+        return system;
+    }
+
+    public List<Project> getProjects () {
+        return projects;
+    }
+
+    public String getName () {
+        return name;
+    }
+
+    @Override
+    public String toString () {
+        return name;
     }
 }

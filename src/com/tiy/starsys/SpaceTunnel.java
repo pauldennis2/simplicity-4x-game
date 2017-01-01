@@ -3,8 +3,9 @@ package com.tiy.starsys;
 /**
  * Created by erronius on 12/20/2016.
  */
-public class SpaceTunnel {
+public class SpaceTunnel extends Location {
 
+    //TODO make some version of this class that works with any 2 Locations (superclass of StarSystem anyway)
     private int length;
     private StarSystem firstSystem;
     private StarSystem secondSystem;
@@ -32,5 +33,14 @@ public class SpaceTunnel {
             return firstSystem;
         }
         return null;
+    }
+
+    public String getName () {
+        return "Tunnel between " + firstSystem.getName() + " and " + secondSystem.getName();
+    }
+
+    @Override
+    public String toString () {
+        return this.getName();
     }
 }

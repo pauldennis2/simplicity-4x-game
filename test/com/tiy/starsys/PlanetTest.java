@@ -57,4 +57,41 @@ public class PlanetTest {
         captainPlanet.setResearchPct(1.2f);
     }
 
+    @Test
+    public void testPopulationGrowthCalc () {
+        //Growth rate is 5% by default
+        captainPlanet.setPopulation(0);
+        assertEquals (-1, captainPlanet.calculateTurnsToGrowth());
+        captainPlanet.setPopulation(1);
+        assertEquals(15, captainPlanet.calculateTurnsToGrowth());
+        captainPlanet.setPopulation(8);
+        assertEquals(3, captainPlanet.calculateTurnsToGrowth());
+    }
+
+    @Test
+    public void testActualPopulationGrowth () {
+        captainPlanet.setPopulation(5);
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        assertEquals(5, captainPlanet.getPopulation());
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        assertEquals(6, captainPlanet.getPopulation());
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        assertEquals(7, captainPlanet.getPopulation());
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        captainPlanet.growPopulation();
+        assertEquals(8, captainPlanet.getPopulation());
+    }
+
+    @Test
+    public void testMaxPopulationGrowth () {
+        captainPlanet.setPopulation(12);
+        assertEquals(-1, captainPlanet.calculateTurnsToGrowth());
+    }
+
 }

@@ -1,9 +1,14 @@
 package com.tiy.starship;
 
+import com.tiy.IllegalMoveException;
+import com.tiy.cli.Player;
+import com.tiy.starsys.SpaceTunnel;
 import com.tiy.starsys.StarSystem;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
@@ -11,9 +16,24 @@ import static org.junit.Assert.*;
  * Created by erronius on 12/26/2016.
  */
 public class StarshipTest {
+
+
+
+    @Rule
+    public final ExpectedException expectedException = ExpectedException.none();
+
+
+    Destroyer doge;
+    StarSystem bravos;
+    StarSystem kitteh;
+    Player owner;
+
     @Before
     public void setUp() throws Exception {
-
+        kitteh = new StarSystem("Kitteh");
+        bravos = new StarSystem("Bravos");
+        doge = new Destroyer(bravos, owner);
+        owner = new Player(bravos, "Jon Snow");
     }
 
     @After
@@ -23,7 +43,7 @@ public class StarshipTest {
 
     @Test
     public void testTakeDamage () {
-        Fighter f1 = new Fighter(new StarSystem("Beetlejuice"));
+        Fighter f1 = new Fighter(new StarSystem("Beetlejuice"), owner);
         //100 Reserve power, shields absorb 10, shield max health = 30, health = 30
         f1.takeDamage(10); //shield 20, health 30
         assertEquals(30, f1.getHealth());
@@ -36,5 +56,18 @@ public class StarshipTest {
         assertEquals (0, f1.getShield().getShieldHealth());
         f1.takeDamage(20);
         assertEquals(5, f1.getHealth());
+    }
+
+    @Test
+    public void testIllegalSetLocationCall () throws IllegalMoveException {
+        expectedException.expect(IllegalMoveException.class);
+        doge.setLocation(kitteh);
+    }
+
+    @Test
+    public void testAnotherIllegalSetLocationCall () throws IllegalMoveException {
+        SpaceTunnel tunnel = new SpaceTunnel(3, bravos, kitteh);
+        expectedException.expect(IllegalMoveException.class);
+        doge.setLocation(tunnel);
     }
 }

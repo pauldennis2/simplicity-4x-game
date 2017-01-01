@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Created by erronius on 12/20/2016.
  */
-public class StarSystem {
+public class StarSystem extends Location {
 
     String name;
     List<Planet> planets;
@@ -46,6 +46,7 @@ public class StarSystem {
     }
 
     public String getName () {
+        System.out.println("Returning name");
         return name;
     }
 

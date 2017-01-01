@@ -71,4 +71,14 @@ public class ColonizerTest {
         colonizer.createColony(planetToColonize);
         assertEquals(player, planetToColonize.getOwner());
     }
+
+    @Test
+    public void testColonizingWhileInLane() throws IllegalMoveException {
+        colonizer = new Colonizer(homeSystem, player);
+        SpaceTunnel tunnel = new SpaceTunnel(2, homeSystem, systemToColonize);
+        colonizer.enterTunnel(tunnel);
+        colonizer.moveToDestination();
+        expectedException.expect(IllegalMoveException.class);
+        colonizer.createColony(planetToColonize);
+    }
 }

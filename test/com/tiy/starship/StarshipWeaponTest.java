@@ -1,5 +1,6 @@
 package com.tiy.starship;
 
+import com.tiy.cli.Player;
 import com.tiy.cli.StarshipSetup;
 import com.tiy.starsys.StarSystem;
 import org.junit.After;
@@ -16,7 +17,7 @@ import static org.junit.Assert.*;
  */
 public class StarshipWeaponTest {
 
-    Destroyer dest = new Destroyer(new StarSystem("Lindblum"), new StarshipSetup(ShipChassis.DESTROYER));
+    Destroyer dest = new Destroyer(new StarSystem("Lindblum"), null, new StarshipSetup(ShipChassis.DESTROYER));
     @Before
     public void setUp() throws Exception {
 
@@ -42,7 +43,7 @@ public class StarshipWeaponTest {
 
     @Test
     public void testPowerShortage () {
-        Fighter fighter = new Fighter(new StarSystem("Lindblum"));
+        Fighter fighter = new Fighter(new StarSystem("Lindblum"), null);
         Weapon expensiveWeapon = new Weapon(60, WeaponClass.BEAM, false);
         List<Weapon> weaponList = new ArrayList<Weapon>();
         weaponList.add(expensiveWeapon);

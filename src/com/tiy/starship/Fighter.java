@@ -1,9 +1,10 @@
 package com.tiy.starship;
 
 import com.tiy.IllegalMoveException;
+import com.tiy.cli.Player;
 import com.tiy.cli.StarshipSetup;
+import com.tiy.starsys.Location;
 import com.tiy.starsys.SpaceTunnel;
-import com.tiy.starsys.StarSystem;
 
 /**
  * Created by erronius on 12/20/2016.
@@ -13,15 +14,15 @@ public class Fighter extends Starship {
     Starship attachedTo;
     boolean attached;
 
-    public Fighter (StarSystem location) {
-        super(location);
+    public Fighter (Location location, Player owner) {
+        super(location, owner);
         shield = Shield.getTemplateShield(ShipChassis.FIGHTER);
         generator = Generator.getTemplateGenerator(ShipChassis.FIGHTER);
         health = 30;
     }
 
-    public Fighter (StarSystem location, StarshipSetup setup) {
-        super(location);
+    public Fighter (Location location, Player owner, StarshipSetup setup) {
+        super(location, owner);
         this.setWeapons(setup.getWeaponList());
         shield = Shield.getTemplateShield(ShipChassis.FIGHTER);
         generator = Generator.getTemplateGenerator(ShipChassis.FIGHTER);
@@ -35,8 +36,7 @@ public class Fighter extends Starship {
 
     public void attachTo (Starship starship) throws IllegalMoveException {
         int berths = starship.fighterBerths;
-
-        if (!this.getCurrentSystem().equals(starship.getCurrentSystem())) {
+        if (!this.getLocation().equals(starship.getLocation())) {
             throw new IllegalMoveException("Cannot attach - not in same system");
         }
 
@@ -45,18 +45,14 @@ public class Fighter extends Starship {
             starship.attach(this);
             attachedTo = starship;
             attached = true;
+            location = starship;
         } else {
             throw new IllegalMoveException("Cannot attach; no berths available.");
         }
     }
 
-
     @Override
-    public StarSystem getCurrentSystem () {
-        if (attached) {
-            return attachedTo.getCurrentSystem();
-        }
-        return this.currentSystem;
+    public String toString () {
+        return this.getName() + " (Fighter) @" + location.getName();
     }
-
 }

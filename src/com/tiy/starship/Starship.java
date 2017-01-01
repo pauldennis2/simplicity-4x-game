@@ -2,6 +2,7 @@ package com.tiy.starship;
 
 import com.tiy.IllegalMoveException;
 import com.tiy.cli.Player;
+import com.tiy.starsys.Location;
 import com.tiy.starsys.SpaceTunnel;
 import com.tiy.starsys.StarSystem;
 
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by erronius on 12/20/2016.
  */
-public abstract class Starship {
+public abstract class Starship extends Location {
 
     private String name;
 
@@ -33,14 +34,27 @@ public abstract class Starship {
     private StarSystem finalDestination; //for later
     private int turnsToDestination;
 
-    StarSystem currentSystem;
+    public static final String[] SHIP_NAMES = {"Voyager", "Enterprise", "Defiant", "Valiant",
+            "Wuddshipp", "Ariel", "Kestrel", "Lightning", "Tornado", "Artanis"};
+    public static final String[] SHIP_PREFIXES = {"Starship", "Warship", "Vessel"};
+    public static int namesIndex = 0;
+
+    //StarSystem currentSystem;
+    Location location;
 
     private boolean inTunnel;
 
-    public Starship(StarSystem location) {
-        this.currentSystem = location;
+    public Starship(Location location, Player owner) {
+        name = "Starship " + SHIP_NAMES[namesIndex];
+
+        namesIndex++;
+        if (namesIndex > 9) {
+            namesIndex = 0;
+        }
+        this.location = location;
         attachedFighters = new ArrayList<>();
         isDestroyed = false;
+        this.owner = owner;
     }
 
     public void startTurn () {
@@ -72,13 +86,14 @@ public abstract class Starship {
         if (inTunnel) {
             throw new IllegalMoveException("Cannot enter a tunnel, already in one");
         }
-        inTunnel = true;
-        turnsToDestination = tunnel.getLength();
-        immediateDestination = tunnel.getOtherSystem(currentSystem);
-        if (!tunnel.getOtherSystem(immediateDestination).equals(currentSystem)) {
+        immediateDestination = tunnel.getOtherSystem((StarSystem) location);
+        if (!tunnel.getOtherSystem(immediateDestination).equals((StarSystem) location)) {
             throw new IllegalMoveException("This tunnel is not connected to the current system");
         }
-        currentSystem = null;
+        inTunnel = true;
+        turnsToDestination = tunnel.getLength();
+
+        location = tunnel;
     }
 
     public boolean attach (Fighter fighter) {
@@ -129,8 +144,24 @@ public abstract class Starship {
         return turnsToDestination;
     }
 
-    public StarSystem getCurrentSystem() {
-        return currentSystem;
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation (Location newLocation) throws IllegalMoveException {
+        //For now, in order to follow business rules, the only valid set comes in moving
+        //a ship out of shipyard. Other sets will be valid later
+
+        if (location.getClass() == Shipyard.class) {
+            StarSystem shipyardSystem = ((Shipyard)location).getSystem();
+            if (newLocation.equals(shipyardSystem)) {
+                location = shipyardSystem;
+            } else {
+                throw new IllegalMoveException ("I'm at a Shipyard that is not in the system you want to move me to");
+            }
+        } else {
+            throw new IllegalMoveException("I'm not at a shipyard; you will have to use tunnels to move me");
+        }
     }
 
     public void moveToDestination () {
@@ -139,7 +170,7 @@ public abstract class Starship {
             if (turnsToDestination == 0) {
                 //pop out
                 inTunnel = false;
-                currentSystem = immediateDestination;
+                location = immediateDestination;
             }
         } else {
             System.out.println("Not in a tunnel. Not moving.");
@@ -198,6 +229,16 @@ public abstract class Starship {
 
     public Shield getShield () {
         return shield;
+    }
+
+    @Override
+    public String toString () {
+        String response = name + " @" + location.getName();
+        return response;
+    }
+
+    public String getName () {
+        return name;
     }
 
 }

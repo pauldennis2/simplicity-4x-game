@@ -1,6 +1,7 @@
 package com.tiy.starship;
 
 import com.tiy.IllegalMoveException;
+import com.tiy.cli.Player;
 import com.tiy.starsys.SpaceTunnel;
 import com.tiy.starsys.StarSystem;
 import org.junit.After;
@@ -25,6 +26,8 @@ public class StarshipTunnelAndFighterAttachTest {
     Destroyer destrier;
     Fighter charlie;
 
+    Player owner;
+
     StarSystem uncon1;
     StarSystem uncon2;
     SpaceTunnel unconTunnel;
@@ -32,10 +35,11 @@ public class StarshipTunnelAndFighterAttachTest {
     @Before
     public void setUp() throws Exception {
         startSystem = new StarSystem("Valefor");
+        owner = new Player(startSystem, "Danaerys");
         endSystem = new StarSystem("Ifrit");
         tunnel = new SpaceTunnel(3, startSystem, endSystem);
-        destrier = new Destroyer(startSystem);
-        charlie = new Fighter(startSystem);
+        destrier = new Destroyer(startSystem, owner);
+        charlie = new Fighter(startSystem, owner);
 
         uncon1 = new StarSystem("Alpha");
         uncon2 = new StarSystem("Beta"); //This is probably unnecessary; we could use null/null instead
@@ -56,7 +60,7 @@ public class StarshipTunnelAndFighterAttachTest {
     @Test
     public void testStarTunnelEnter () throws IllegalMoveException {
         destrier.enterTunnel(tunnel);
-        assertEquals(null, destrier.getCurrentSystem());
+        assertEquals(tunnel, destrier.getLocation());
         assertEquals(tunnel.getLength(), destrier.getTurnsToDestination());
 
         expectedException.expect(IllegalMoveException.class);
@@ -71,41 +75,41 @@ public class StarshipTunnelAndFighterAttachTest {
         destrier.moveToDestination();
         assertEquals(1, destrier.getTurnsToDestination());
         destrier.moveToDestination();
-        assertEquals(endSystem, destrier.getCurrentSystem());
+        assertEquals(endSystem, destrier.getLocation());
     }
 
     @Test
     public void testWrongFunctionFighterAttach () {
         //This function should not be called externally (internal call in fighter.attachTo(Starship)
         assertEquals(true, destrier.attach(charlie));
-        assertEquals(true, destrier.attach(new Fighter(null)));
-        assertEquals(false, destrier.attach(new Fighter(null)));
+        assertEquals(true, destrier.attach(new Fighter(null, owner)));
+        assertEquals(false, destrier.attach(new Fighter(null, owner)));
     }
 
     @Test
     public void testWrongSystemFighterAttach () throws IllegalMoveException {
         expectedException.expect(IllegalMoveException.class);
-        new Fighter(uncon1).attachTo(destrier);
+        new Fighter(uncon1, owner).attachTo(destrier);
     }
 
     @Test
     public void testTooManyFightersAttach () throws IllegalMoveException {
-        new Fighter(startSystem).attachTo(destrier);
-        new Fighter(startSystem).attachTo(destrier);
+        new Fighter(startSystem, owner).attachTo(destrier);
+        new Fighter(startSystem, owner).attachTo(destrier);
         expectedException.expect(IllegalMoveException.class);
-        new Fighter(startSystem).attachTo(destrier);
+        new Fighter(startSystem, owner).attachTo(destrier);
     }
 
     @Test
     public void testStarTunnelWithAttachedFighters () throws IllegalMoveException {
         charlie.attachTo(destrier);
-        assertEquals(charlie.getCurrentSystem(), destrier.getCurrentSystem());
+        assertEquals(destrier, charlie.getLocation());
         destrier.enterTunnel(tunnel);
-        assertEquals(null, charlie.getCurrentSystem());
+        assertEquals(destrier, charlie.getLocation());
         destrier.moveToDestination();
         destrier.moveToDestination();
         destrier.moveToDestination();
-        assertEquals(endSystem, charlie.getCurrentSystem());
+        assertEquals(endSystem, destrier.getLocation());
     }
 
 }

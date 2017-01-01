@@ -25,6 +25,10 @@ public class Planet {
 
     private StarSystem system;
 
+    public static final double BASE_GROWTH_RATE = 1.05; //Planets grow by 5% per turn
+    private double planetGrowthRate = 1.0;
+    private int turnsToGrowth;
+
     public Planet (String name, int size, boolean habitable, StarSystem system) {
         this.name = name;
         this.size = size;
@@ -41,8 +45,8 @@ public class Planet {
         //Example:
         //Alpha Centauri Owned by Player 4/8
         String response = name + " ";
-        if (!owner.equals("none")) {
-            response += "Owned by " + owner + " ";
+        if (owner != null) {
+            response += "Owned by " + owner.getName() + " ";
         }
         response += population + "/" + size;
         return response;
@@ -58,6 +62,7 @@ public class Planet {
 
     public void setPopulation (int pop) {
         population = pop;
+        turnsToGrowth = calculateTurnsToGrowth();
     }
 
     public void setOwner (Player owner) {
@@ -84,6 +89,15 @@ public class Planet {
         return Math.round(productionProduced);
     }
 
+    public void growPopulation () {
+        if (turnsToGrowth > 1) {
+            turnsToGrowth--;
+        } else {
+            population++;
+            turnsToGrowth = calculateTurnsToGrowth();
+        }
+    }
+
     public float getResearchPct () {
         return researchPct;
     }
@@ -94,5 +108,19 @@ public class Planet {
 
     public int getPopulation () {
         return population;
+    }
+
+    public int calculateTurnsToGrowth () {
+        if (population > 0 && population < size) {
+            double pop = (double) population;
+            int numTurns = 0;
+            while (pop < population + 1) {
+                pop *= BASE_GROWTH_RATE;
+                numTurns++;
+            }
+            return numTurns;
+        } else {
+            return -1;
+        }
     }
 }
