@@ -1,6 +1,7 @@
 package com.tiy.starship;
 
 import com.tiy.IllegalMoveException;
+import com.tiy.ImproperFunctionInputException;
 import com.tiy.cli.Player;
 import com.tiy.starsys.Location;
 import com.tiy.starsys.SpaceTunnel;
@@ -23,6 +24,7 @@ public abstract class Starship extends Location {
     private List<Weapon> weapons;
 
     int health;
+    int maxHealth;
 
     boolean isDestroyed; //This will be replaced later by logic
 
@@ -192,7 +194,10 @@ public abstract class Starship extends Location {
         generator.getAvailablePower();
     }
 
-    public void takeDamage (int damage) {
+    public void takeDamage (int damage) throws ImproperFunctionInputException {
+        if (damage < 0) {
+            throw new ImproperFunctionInputException("Cannot take negative damage");
+        }
         if (shield.shieldsUp()) {
             int maxDamageAbsorb = shield.getMaxDamageAbsorb();
             int powerAvailable = generator.getAvailablePower();
@@ -200,7 +205,7 @@ public abstract class Starship extends Location {
             if (powerAvailable >= maxDamageAbsorb) {
                 int returnedDamage = shield.takeDamage(damage);
                 health -= returnedDamage;
-                powerAvailable -= maxDamageAbsorb;
+                powerAvailable -= damage - returnedDamage; //Subtract power equal to the amount of damage absorbed by shield
                 generator.returnUnusedPower(powerAvailable);
             } else { //powerAvailable < maxDamageAbsorb
                 int returnedDamage = shield.takeDamage(powerAvailable);
@@ -212,6 +217,7 @@ public abstract class Starship extends Location {
         }
         if (health <= 0) {
             isDestroyed = true;
+            location = new StarSystem("Junk Pile");
         }
     }
 
@@ -231,6 +237,10 @@ public abstract class Starship extends Location {
         return shield;
     }
 
+    public Generator getGenerator () {
+        return generator;
+    }
+
     @Override
     public String toString () {
         String response = name + " @" + location.getName();
@@ -239,6 +249,10 @@ public abstract class Starship extends Location {
 
     public String getName () {
         return name;
+    }
+
+    public int getMaxHealth () {
+        return maxHealth;
     }
 
 }

@@ -46,7 +46,6 @@ public class StarSystem extends Location {
     }
 
     public String getName () {
-        System.out.println("Returning name");
         return name;
     }
 

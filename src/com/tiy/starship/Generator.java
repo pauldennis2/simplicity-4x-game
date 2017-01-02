@@ -45,4 +45,12 @@ public class Generator {
         }
         return null;
     }
+
+    public int getMaxReservePower () {
+        return maxReservePower;
+    }
+
+    public int getCurrentReservePower () {
+        return currentReservePower;
+    }
 }

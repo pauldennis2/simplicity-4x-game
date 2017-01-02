@@ -15,6 +15,7 @@ public class Destroyer extends Starship {
         shield = Shield.getTemplateShield(ShipChassis.DESTROYER);
         generator = Generator.getTemplateGenerator(ShipChassis.DESTROYER);
         health = 100;
+        maxHealth = health;
     }
 
     public Destroyer (Location location, Player owner, StarshipSetup setup) {
@@ -24,6 +25,7 @@ public class Destroyer extends Starship {
         shield = Shield.getTemplateShield(ShipChassis.DESTROYER);
         generator = Generator.getTemplateGenerator(ShipChassis.DESTROYER);
         health = 100;
+        maxHealth = health;
     }
 
     @Override

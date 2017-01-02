@@ -58,4 +58,15 @@ public class ShieldTest {
         assertEquals(50-20+2, shield.getShieldHealth());
     }
 
+    @Test
+    public void testManySmallDamageInstances () {
+        shield = new Shield(ShieldType.BASIC, 10, 30, 0);
+        int totalReturned = 0;
+        for (int i = 0; i < 25; i++) {
+            totalReturned += shield.takeDamage(1);
+        }
+        assertEquals(0, totalReturned);
+        assertEquals(5, shield.getShieldHealth());
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.tiy.starship;
 
 import com.tiy.IllegalMoveException;
+import com.tiy.ImproperFunctionInputException;
 import com.tiy.cli.Player;
 import com.tiy.starsys.SpaceTunnel;
 import com.tiy.starsys.StarSystem;
@@ -42,7 +43,7 @@ public class StarshipTest {
     }
 
     @Test
-    public void testTakeDamage () {
+    public void testTakeDamage () throws ImproperFunctionInputException {
         Fighter f1 = new Fighter(new StarSystem("Beetlejuice"), owner);
         //100 Reserve power, shields absorb 10, shield max health = 30, health = 30
         f1.takeDamage(10); //shield 20, health 30
@@ -69,5 +70,15 @@ public class StarshipTest {
         SpaceTunnel tunnel = new SpaceTunnel(3, bravos, kitteh);
         expectedException.expect(IllegalMoveException.class);
         doge.setLocation(tunnel);
+    }
+
+    @Test
+    public void testTakeDamageManySmallInstances () throws ImproperFunctionInputException {
+        Fighter f1 = new Fighter(new StarSystem("Beetlejuice"), owner);
+        for (int i = 0; i < 25; i++) {
+            f1.takeDamage(1);
+        }
+        assertEquals(5, f1.getShield().getShieldHealth());
+        assertEquals(30, f1.getHealth());
     }
 }

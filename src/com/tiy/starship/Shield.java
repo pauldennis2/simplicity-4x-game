@@ -146,4 +146,20 @@ public class Shield {
     public void lowerShields () {
         shieldsUp = false;
     }
+
+    public int getMaxShieldHealth () {
+        return maxShieldHealth;
+    }
+
+    @Override
+    public String toString () {
+        String response = "Shield: ";
+        if (shieldsUp) {
+            response += "Up, ";
+        } else {
+            response += "Down, ";
+        }
+        response += shieldHealth + "/" + maxShieldHealth;
+        return response;
+    }
 }

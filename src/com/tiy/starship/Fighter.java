@@ -19,6 +19,7 @@ public class Fighter extends Starship {
         shield = Shield.getTemplateShield(ShipChassis.FIGHTER);
         generator = Generator.getTemplateGenerator(ShipChassis.FIGHTER);
         health = 30;
+        maxHealth = health;
     }
 
     public Fighter (Location location, Player owner, StarshipSetup setup) {
@@ -27,6 +28,7 @@ public class Fighter extends Starship {
         shield = Shield.getTemplateShield(ShipChassis.FIGHTER);
         generator = Generator.getTemplateGenerator(ShipChassis.FIGHTER);
         health = 30;
+        maxHealth = health;
     }
 
     @Override
