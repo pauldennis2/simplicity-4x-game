@@ -9,11 +9,13 @@ public class SpaceTunnel extends Location {
     private int length;
     private StarSystem firstSystem;
     private StarSystem secondSystem;
+    private TunnelType type;
 
     public SpaceTunnel (int length, StarSystem firstSystem, StarSystem secondSystem) {
         this.length = length;
         this.firstSystem = firstSystem;
         this.secondSystem = secondSystem;
+        type = TunnelType.BLUE;
     }
 
     public int getLength () {
@@ -37,6 +39,14 @@ public class SpaceTunnel extends Location {
 
     public String getName () {
         return "Tunnel between " + firstSystem.getName() + " and " + secondSystem.getName();
+    }
+
+    public StarSystem getFirstSystem() {
+        return firstSystem;
+    }
+
+    public StarSystem getSecondSystem() {
+        return secondSystem;
     }
 
     @Override

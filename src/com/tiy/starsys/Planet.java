@@ -4,6 +4,8 @@ import com.sun.xml.internal.ws.policy.AssertionSet;
 import com.tiy.ImproperFunctionInputException;
 import com.tiy.cli.Player;
 
+import java.util.Random;
+
 /**
  * Created by erronius on 12/20/2016.
  */
@@ -14,7 +16,6 @@ public class Planet {
     private int size;
     private int population;
     private String name;
-    //private Race owner;
     private Player owner;
 
     private float researchPct;
@@ -38,6 +39,11 @@ public class Planet {
         researchPct = 0.4f;
         productionPct = 0.6f;
         this.system = system;
+    }
+
+    public Planet (String name, Random random) {
+        this.name = name;
+
     }
 
     @Override

@@ -13,6 +13,9 @@ public class StarSystem extends Location {
     List<Planet> planets;
     List<SpaceTunnel> tunnels;
 
+    public int gridCoordX;
+    public int gridCoordY;
+
     private boolean discoveredByPlayer = false;
     private boolean[] discoveredByPlayers;
 
@@ -41,9 +44,18 @@ public class StarSystem extends Location {
         }
     }
 
+    public StarSystem (String name, int gridCoordX, int gridCoordY) {
+        this.name = name;
+        planets = new ArrayList<>();
+        tunnels = new ArrayList<>();
+        this.gridCoordX = gridCoordX;
+        this.gridCoordY = gridCoordY;
+    }
+
     public void addTunnel (SpaceTunnel tunnel) {
         tunnels.add(tunnel);
     }
+
 
     public String getName () {
         return name;
@@ -68,6 +80,36 @@ public class StarSystem extends Location {
 
     public List<Planet> getPlanets () {
         return planets;
+    }
+
+    public List<StarSystem> getConnectedSystems () {
+        List<StarSystem> connectedSystems = new ArrayList<>();
+        for (SpaceTunnel tunnel : tunnels) {
+            connectedSystems.add(tunnel.getOtherSystem(this));
+        }
+        return connectedSystems;
+    }
+
+    public int getX () {
+        return gridCoordX;
+    }
+
+    public int getY () {
+        return gridCoordY;
+    }
+
+    /**
+     * Calculates the Cartesian distance between the two StarSystems (namely the length of the tunnel between them
+     * if the tunnel follows normal Cartesian rules). We don't care if there IS a tunnel.
+     * @param firstSystem
+     * @param secondSystem
+     * @return Distance between the systems (rounded to nearest whole number)
+     */
+    public static int calculateCartesianDistance (StarSystem firstSystem, StarSystem secondSystem) {
+        int xDif = Math.abs(firstSystem.getX() - secondSystem.getX());
+        int yDif = Math.abs(firstSystem.getY() - secondSystem.getY());
+        double hypotenuseLength = Math.sqrt(xDif*xDif + yDif*yDif);
+        return (int)Math.round(hypotenuseLength);
     }
 
 }

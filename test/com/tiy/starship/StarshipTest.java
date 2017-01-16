@@ -18,11 +18,8 @@ import static org.junit.Assert.*;
  */
 public class StarshipTest {
 
-
-
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
-
 
     Destroyer doge;
     StarSystem bravos;

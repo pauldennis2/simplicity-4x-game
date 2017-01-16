@@ -3,10 +3,7 @@ package com.tiy.cli;
 import com.tiy.IllegalMoveException;
 import com.tiy.ImproperFunctionInputException;
 import com.tiy.starship.*;
-import com.tiy.starsys.Planet;
-import com.tiy.starsys.SpaceTunnel;
-import com.tiy.starsys.StarSystem;
-import com.tiy.starsys.StarSystemGraph;
+import com.tiy.starsys.*;
 import sun.security.krb5.internal.crypto.Des;
 
 import java.util.Scanner;
@@ -21,7 +18,8 @@ public class CLIRunner {
     StarSystemGraph simpleSystemGraph;
 
     public static void main(String[] args) {
-        new CLIRunner().simpleGame();
+        //new CLIRunner().simpleGame();
+        new CLIRunner().ringMapTest();
     }
 
     public CLIRunner () {
@@ -35,6 +33,11 @@ public class CLIRunner {
         for (StarSystem starSystem : simpleSystemGraph.getStarSystems()) {
             System.out.println(starSystem);
         }
+    }
+
+    public void ringMapTest () {
+        StarSystemGraph ringSystemGraph = new StarSystemGraph(0, MapSize.SMALL);
+        ringSystemGraph.printInfo();
     }
 
     public void simpleGame () {
