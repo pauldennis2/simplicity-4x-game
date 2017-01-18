@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiy.javafx.ShipBuilderController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Ship Size">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <ComboBox fx:id="shipSizeComboBox" prefWidth="150.0" />
+            <Label text="Ship Name">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="shipNameTextField" disable="true" text="&lt;Not yet implemented&gt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="300.0" prefWidth="750.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" text="Small Weapons">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="firstSmallWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="secondSmallWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="thirdSmallWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="fourthSmallWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="fifthSmallWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin></VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" text="Large Weapons">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="firstLargeWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="secondLargeWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="thirdLargeWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="fourthLargeWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="fifthLargeWeapSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin></VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Upgrade Slots">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="firstUpgradeSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="secondUpgradeSlot" disable="true" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin></VBox>
+            <VBox prefHeight="300.0" prefWidth="121.0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <children>
+                  <Label text="Ship Info:" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Health:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Shield Health:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Shield Strength:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Shield Regen:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Generator Reserve:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Generator Per Turn:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Fighter Berths:">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="283.0" prefWidth="72.0" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+               <children>
+                  <Label />
+                  <Label fx:id="shipHealthLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="shieldHealthLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="shieldStrengthLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="shieldRegenLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="generatorReserveLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="generatorPerTurnLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fighterBerthsLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="283.0" prefWidth="245.0">
+               <children>
+                  <Label text="Current Production Queue:" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="productionQueueListView" prefHeight="200.0" prefWidth="213.0" />
+                  <Button fx:id="removeShipButton" mnemonicParsing="false" onAction="#removeSelectedShip" text="Remove Selected" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="278.0">
+               <children>
+                  <Label text="Total Production Required:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Your Current Production Per Turn:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Estimated Time to Produce:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="totalProductionLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentProductionLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="estimatedTimeLabel" text="&lt;&gt;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="189.0">
+               <children>
+                  <Label text="Add Ship to Queue:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="addShipTopButton" mnemonicParsing="false" onAction="#addShipTop" text="Top" />
+                  <Button fx:id="addShipBottomButton" mnemonicParsing="false" onAction="#addShipBottom" text="Bottom" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

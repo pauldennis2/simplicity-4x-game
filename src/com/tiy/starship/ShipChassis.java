@@ -58,4 +58,22 @@ public enum ShipChassis {
     public int getShieldStrength() {
         return shieldStrength;
     }
+
+    public static ShipChassis getShipChassis (String name) {
+        name = name.toLowerCase();
+        switch (name) {
+            case "fighter":
+                return FIGHTER;
+            case "destroyer":
+                return DESTROYER;
+            /*case "cruiser":
+                return CRUISER;
+            case "battleship":
+                return BATTLESHIP;
+            case "capitol ship":
+                return CAPITOL_SHIP;*/
+            default:
+                return null;
+        }
+    }
 }

@@ -37,6 +37,11 @@ public class Player {
         tech = Technology.HEPHAESTUS_I;
     }
 
+    public int getCurrentProductionPerTurn () {
+        System.out.println("getCurrentProductionPerTurn() returning a hard-coded value");
+        return 5;
+    }
+
     public void addShip (Starship starship) {
         ships.add(starship);
     }
@@ -97,5 +102,19 @@ public class Player {
 
     public Shipyard getShipyard () {
         return shipyard;
+    }
+
+    public List<String> getAvailableSmallWeaps () {
+        List<String> smallWeaps = new ArrayList<>();
+        smallWeaps.add("Small Beam");
+        smallWeaps.add("Small Missile");
+        return smallWeaps;
+    }
+
+    public List<String> getAvailableLargeWeaps () {
+        List<String> largeWeaps = new ArrayList<>();
+        largeWeaps.add("Large Beam");
+        largeWeaps.add("Large Missile");
+        return largeWeaps;
     }
 }

@@ -34,6 +34,13 @@ public class Shipyard extends Location {
         }
     }
 
+    public void addProjectTopPriority (Project project) {
+        projects.add(0, project);
+        if (currentProject == null) {
+            currentProject = project;
+        }
+    }
+
     public void addProductionToCurrentProject (int production) {
         if (currentProject == null) {
             System.out.println("Current project is null. Please give me something to do.");
@@ -74,6 +81,14 @@ public class Shipyard extends Location {
 
     public String getName () {
         return name;
+    }
+
+    public boolean removeProject (Project project) {
+        if (projects.contains(project)) {
+            projects.remove(project);
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -53,8 +53,8 @@ public class Project {
     @Override
     public String toString () {
         String longClass = goal.getClass().toString();
-        //String[] shipClass = goal.getClass().toString().split(".");
-        //String shortenedClass = shipClass[shipClass.length-1];
-        return goal + " " + longClass + " " + currentProduction + "/" + requiredProduction;
+        //It's a com.tiy.starship.X
+        String shortClass = longClass.substring(23);
+        return goal.getName() + " (" + shortClass + ") " + currentProduction + "/" + requiredProduction;
     }
 }
