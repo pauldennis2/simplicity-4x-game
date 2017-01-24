@@ -38,9 +38,9 @@ public class ShipBuilder extends Application {
         fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
         Parent root = (Parent) fxmlLoader.load(location.openStream());
 
-
         primaryStage.setTitle("Ship Builder");
-        primaryStage.setScene(new Scene(root, 750, 450));
+        primaryStage.setScene(new Scene(root, 900, 450));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }

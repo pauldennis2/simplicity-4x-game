@@ -11,21 +11,27 @@ public class Destroyer extends Starship {
 
     public Destroyer (Location location, Player owner) {
         super(location, owner);
-        this.fighterBerths = 2;
-        shield = Shield.getTemplateShield(ShipChassis.DESTROYER);
-        generator = Generator.getTemplateGenerator(ShipChassis.DESTROYER);
-        health = 100;
-        maxHealth = health;
+        initializeVars();
     }
 
     public Destroyer (Location location, Player owner, StarshipSetup setup) {
         super(location, owner);
         this.fighterBerths = 2;
         this.setWeapons(setup.getWeaponList());
+        initializeVars();
+    }
+
+    public Destroyer (Location location, Player owner, String name) {
+        super(location, owner, name);
+        initializeVars();
+    }
+
+    public void initializeVars () {
+        fighterBerths = ShipChassis.DESTROYER.getFighterBerths();
+        health = ShipChassis.DESTROYER.getHealth();
+        maxHealth = health;
         shield = Shield.getTemplateShield(ShipChassis.DESTROYER);
         generator = Generator.getTemplateGenerator(ShipChassis.DESTROYER);
-        health = 100;
-        maxHealth = health;
     }
 
     @Override

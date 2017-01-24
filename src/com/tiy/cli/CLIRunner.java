@@ -98,7 +98,7 @@ public class CLIRunner {
                     break;
                 case 4:
                     tester.moveShips();
-                    tester.getResearchAndProductionFromPlanets();
+                    tester.doTurn();
                     break;
                 case 5:
                     playing = false;

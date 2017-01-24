@@ -21,6 +21,10 @@ public class Generator {
         return availablePower;
     }
 
+    public int getPowerPerTurn () {
+        return powerPerTurn;
+    }
+
     public void generatePower () {
         currentReservePower += powerPerTurn;
     }
@@ -28,6 +32,7 @@ public class Generator {
     public void returnUnusedPower (int unusedPower) {
         if (unusedPower < 0) {
             System.out.println("houston problem");
+            throw new AssertionError("Can't return negative power");
         }
         if (currentReservePower + unusedPower <= maxReservePower) {
             currentReservePower += unusedPower;

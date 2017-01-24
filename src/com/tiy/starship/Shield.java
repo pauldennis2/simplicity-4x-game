@@ -151,6 +151,10 @@ public class Shield {
         return maxShieldHealth;
     }
 
+    public int getRegenRate () {
+        return regenRate;
+    }
+
     @Override
     public String toString () {
         String response = "Shield: ";

@@ -23,15 +23,15 @@ public class StarshipSetup {
     public StarshipSetup (ShipChassis shipType) {
         weaponList = new ArrayList<Weapon>();
         if (shipType == ShipChassis.FIGHTER) {
-            Weapon smallBeamWeapon = new Weapon(15, WeaponClass.BEAM, false);
-            Weapon smallMsilWeapon = new Weapon(30, WeaponClass.MISSILE, false);
+            Weapon smallBeamWeapon = new Weapon(WeaponClass.BEAM, false);
+            Weapon smallMsilWeapon = new Weapon(WeaponClass.MISSILE, false);
             weaponList.add(smallBeamWeapon);
             weaponList.add(smallMsilWeapon);
         }
         if (shipType == ShipChassis.DESTROYER) {
-            Weapon smallBeamWeapon = new Weapon(15, WeaponClass.BEAM, false);
-            Weapon smallMsilWeapon = new Weapon(30, WeaponClass.MISSILE, false);
-            Weapon largeBeamWeapon = new Weapon(35, WeaponClass.BEAM, true);
+            Weapon smallBeamWeapon = new Weapon(WeaponClass.BEAM, false);
+            Weapon smallMsilWeapon = new Weapon(WeaponClass.MISSILE, false);
+            Weapon largeBeamWeapon = new Weapon(WeaponClass.BEAM, true);
             weaponList.add(smallBeamWeapon);
             weaponList.add(smallMsilWeapon);
             weaponList.add(largeBeamWeapon);

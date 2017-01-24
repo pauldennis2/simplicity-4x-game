@@ -40,6 +40,7 @@ public abstract class Starship extends Location {
             "Wuddshipp", "Ariel", "Kestrel", "Lightning", "Tornado", "Artanis"};
     public static final String[] SHIP_PREFIXES = {"Starship", "Warship", "Vessel"};
     public static int namesIndex = 0;
+    public static int prefixIndex = 0;
 
     //StarSystem currentSystem;
     Location location;
@@ -47,12 +48,24 @@ public abstract class Starship extends Location {
     private boolean inTunnel;
 
     public Starship(Location location, Player owner) {
-        name = "Starship " + SHIP_NAMES[namesIndex];
+        name = SHIP_PREFIXES[prefixIndex] + " " + SHIP_NAMES[namesIndex];
 
         namesIndex++;
-        if (namesIndex > 9) {
+        if (namesIndex > SHIP_NAMES.length - 1) {
             namesIndex = 0;
+            prefixIndex++;
+            if (prefixIndex > SHIP_PREFIXES.length - 1) {
+                prefixIndex = 0;
+            }
         }
+        this.location = location;
+        attachedFighters = new ArrayList<>();
+        isDestroyed = false;
+        this.owner = owner;
+    }
+
+    public Starship (Location location, Player owner, String name) {
+        this.name = name;
         this.location = location;
         attachedFighters = new ArrayList<>();
         isDestroyed = false;

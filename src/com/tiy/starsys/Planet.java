@@ -43,7 +43,6 @@ public class Planet {
 
     public Planet (String name, Random random) {
         this.name = name;
-
     }
 
     @Override

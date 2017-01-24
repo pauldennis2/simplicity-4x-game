@@ -93,6 +93,6 @@ public class Shipyard extends Location {
 
     @Override
     public String toString () {
-        return name;
+        return name + " @ " + system.getName();
     }
 }

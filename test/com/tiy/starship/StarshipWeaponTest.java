@@ -44,7 +44,7 @@ public class StarshipWeaponTest {
     @Test
     public void testPowerShortage () {
         Fighter fighter = new Fighter(new StarSystem("Lindblum"), null);
-        Weapon expensiveWeapon = new Weapon(60, WeaponClass.BEAM, false);
+        Weapon expensiveWeapon = new Weapon(WeaponClass.BEAM, false, 60);
         List<Weapon> weaponList = new ArrayList<Weapon>();
         weaponList.add(expensiveWeapon);
         fighter.setWeapons(weaponList);

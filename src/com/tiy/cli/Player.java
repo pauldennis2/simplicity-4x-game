@@ -2,6 +2,8 @@ package com.tiy.cli;
 
 import com.tiy.starship.Shipyard;
 import com.tiy.starship.Starship;
+import com.tiy.starship.Weapon;
+import com.tiy.starship.WeaponClass;
 import com.tiy.starsys.Planet;
 import com.tiy.starsys.StarSystem;
 import com.tiy.starsys.Technology;
@@ -54,12 +56,13 @@ public class Player {
         }
     }
 
-    public void getResearchAndProductionFromPlanets () {
+    public void doTurn () {
         int production = 0;
         int research = 0;
         for (Planet planet : planets) {
             production += planet.getProduction();
             research += planet.getResearch();
+            planet.growPopulation();
         }
         System.out.println("Adding " + research + " research to pool.");
         totalResearch += research;
@@ -104,17 +107,17 @@ public class Player {
         return shipyard;
     }
 
-    public List<String> getAvailableSmallWeaps () {
-        List<String> smallWeaps = new ArrayList<>();
-        smallWeaps.add("Small Beam");
-        smallWeaps.add("Small Missile");
+    public List<Weapon> getAvailableSmallWeaps () {
+        List<Weapon> smallWeaps = new ArrayList<>();
+        smallWeaps.add(new Weapon(WeaponClass.BEAM, false));
+        smallWeaps.add(new Weapon(WeaponClass.MISSILE, false));
         return smallWeaps;
     }
 
-    public List<String> getAvailableLargeWeaps () {
-        List<String> largeWeaps = new ArrayList<>();
-        largeWeaps.add("Large Beam");
-        largeWeaps.add("Large Missile");
+    public List<Weapon> getAvailableLargeWeaps () {
+        List<Weapon> largeWeaps = new ArrayList<>();
+        largeWeaps.add(new Weapon(WeaponClass.BEAM, true));
+        largeWeaps.add(new Weapon(WeaponClass.MISSILE, true));
         return largeWeaps;
     }
 }

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiy.javafx.ShipBuilderController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiy.javafx.ShipBuilderController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -22,25 +22,39 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <ComboBox fx:id="shipSizeComboBox" prefWidth="150.0" />
-            <Label text="Ship Name">
+            <ComboBox fx:id="shipSizeComboBox" prefWidth="150.0">
                <HBox.margin>
                   <Insets top="5.0" />
+               </HBox.margin></ComboBox>
+            <Label text="Ship Name">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="shipNameTextField" disable="true" text="&lt;Not yet implemented&gt;">
+            <TextField fx:id="shipNameTextField">
                <font>
                   <Font size="15.0" />
                </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
             </TextField>
+            <Label fx:id="shipyardLabel" text="&lt;Shipyard&gt; @ System">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
       <HBox prefHeight="300.0" prefWidth="750.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="125.0">
                <children>
                   <Label alignment="CENTER" text="Small Weapons">
                      <font>
@@ -76,7 +90,7 @@
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin></VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="125.0">
                <children>
                   <Label alignment="CENTER" text="Large Weapons">
                      <font>
@@ -112,7 +126,7 @@
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin></VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="150.0">
                <children>
                   <Label text="Upgrade Slots">
                      <font>
@@ -133,7 +147,7 @@
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin></VBox>
-            <VBox prefHeight="300.0" prefWidth="121.0">
+            <VBox alignment="TOP_RIGHT" prefHeight="300.0" prefWidth="121.0">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
@@ -185,7 +199,10 @@
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
                <children>
-                  <Label />
+                  <Label>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                   <Label fx:id="shipHealthLabel" text="&lt;&gt;">
                      <font>
                         <Font size="13.0" />
@@ -244,16 +261,25 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
                   </Label>
                   <Label text="Your Current Production Per Turn:">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
                   </Label>
                   <Label text="Estimated Time to Produce:">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>

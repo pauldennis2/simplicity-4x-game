@@ -5,9 +5,9 @@ package com.tiy.starship;
  */
 public enum ShipChassis {
     //ShipChassis Constructor:
-    //smallWeap, largeWeap, fighterBerths, upgrades, fighterSlots, health, shieldStr
-    FIGHTER (2, 0, 0, 0, 0, 25, 5),
-    DESTROYER (2, 1, 2, 0, 0, 100, 10);
+    //smallWeap, largeWeap, fighterBerths, upgrades, fighterSlots, health, baseCost
+    FIGHTER (2, 0, 0, 0, 0, 25, 20),
+    DESTROYER (2, 1, 2, 0, 0, 100, 90);
     //CRUISER (data),
     //BATTLESHIP (data),
     //CAPITOL_SHIP (data);
@@ -18,17 +18,17 @@ public enum ShipChassis {
     private final int upgradeSlots;
     private final int fighterSlots;
     private final int health;
-    private final int shieldStrength;
+    private final int baseProductionCost;
 
     ShipChassis(int smallWeaponSlots, int largeWeaponSlots, int fighterBerths, int upgradeSlots, int fighterSlots,
-                int health, int shieldStrength) {
+                int health, int baseProductionCost) {
         this.smallWeaponSlots = smallWeaponSlots;
         this.largeWeaponSlots = largeWeaponSlots;
         this.fighterBerths = fighterBerths;
         this.upgradeSlots = upgradeSlots;
         this.fighterSlots = fighterSlots;
         this.health = health;
-        this.shieldStrength = shieldStrength;
+        this.baseProductionCost = baseProductionCost;
     }
 
     public int getSmallWeaponSlots() {
@@ -55,10 +55,6 @@ public enum ShipChassis {
         return health;
     }
 
-    public int getShieldStrength() {
-        return shieldStrength;
-    }
-
     public static ShipChassis getShipChassis (String name) {
         name = name.toLowerCase();
         switch (name) {
@@ -75,5 +71,17 @@ public enum ShipChassis {
             default:
                 return null;
         }
+    }
+
+    public Shield getShield () {
+        return Shield.getTemplateShield(this);
+    }
+
+    public Generator getGenerator () {
+        return Generator.getTemplateGenerator(this);
+    }
+
+    public int getBaseProductionCost () {
+        return baseProductionCost;
     }
 }
