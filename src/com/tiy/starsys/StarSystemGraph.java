@@ -19,7 +19,7 @@ public class StarSystemGraph {
 
     public static final int FIRST_TUNNEL_LENGTH = 2;
     public static final int SECOND_TUNNEL_LENGTH = 4;
-    public static final int THIRD_TUNNEL_LENGHT = 5;
+    public static final int THIRD_TUNNEL_LENGTH = 5;
 
 
     //Create a super simple graph, A <=> B <=> C
@@ -86,8 +86,8 @@ public class StarSystemGraph {
         tunnels.add(new SpaceTunnel(SECOND_TUNNEL_LENGTH, nameStarSystemMap.get("P2 Home CW"), nameStarSystemMap.get("Left Mid")));
         tunnels.add(new SpaceTunnel(SECOND_TUNNEL_LENGTH, nameStarSystemMap.get("P2 Home CCW"), nameStarSystemMap.get("Right Mid")));
 
-        tunnels.add(new SpaceTunnel(THIRD_TUNNEL_LENGHT, nameStarSystemMap.get("Left Mid"), nameStarSystemMap.get("Mid")));
-        tunnels.add(new SpaceTunnel(THIRD_TUNNEL_LENGHT, nameStarSystemMap.get("Right Mid"), nameStarSystemMap.get("Mid")));
+        tunnels.add(new SpaceTunnel(THIRD_TUNNEL_LENGTH, nameStarSystemMap.get("Left Mid"), nameStarSystemMap.get("Mid")));
+        tunnels.add(new SpaceTunnel(THIRD_TUNNEL_LENGTH, nameStarSystemMap.get("Right Mid"), nameStarSystemMap.get("Mid")));
 
         for (SpaceTunnel tunnel : tunnels) {
             StarSystem firstSystem = tunnel.getFirstSystem();
@@ -98,7 +98,7 @@ public class StarSystemGraph {
         }
     }
 
-    public StarSystemGraph (Point p) {
+    public StarSystemGraph (String fileName) {
         starSystems = new ArrayList<StarSystem>();
         nameStarSystemMap = new HashMap<String, StarSystem>();
         pointStarSystemMap = new HashMap<Point, StarSystem>();
@@ -108,7 +108,7 @@ public class StarSystemGraph {
         //read from file
         try {
             //File Syntax: First Section ... "=====" Second Section
-            Scanner fileScanner = new Scanner(new File("4p_med_ring_map.txt"));
+            Scanner fileScanner = new Scanner(new File(fileName));
             while (fileScanner.hasNext()) {
                 //First Section: System Information
                 //System Name,X,Y

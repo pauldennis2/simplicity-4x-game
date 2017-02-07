@@ -19,6 +19,8 @@ public class StarSystem extends Location {
     private boolean discoveredByPlayer = false;
     private boolean[] discoveredByPlayers;
 
+    public static final int MAX_PLANETS = 4;
+
     public static final String[] ROMAN_NUMERALS = {"I", "II", "III", "IV", "V"};
 
     public static final int DEFAULT_PLANET_SIZE = 10;
@@ -50,6 +52,22 @@ public class StarSystem extends Location {
         tunnels = new ArrayList<>();
         this.gridCoordX = gridCoordX;
         this.gridCoordY = gridCoordY;
+        //planets.add(new Planet())
+    }
+
+    public StarSystem (String name, int gridCoordX, int gridCoordY, Random random) {
+        this.name = name;
+        planets = new ArrayList<>();
+        tunnels = new ArrayList<>();
+        this.gridCoordX = gridCoordX;
+        this.gridCoordY = gridCoordY;
+        //decide how many planets to create, 0-3
+        int numPlanets = random.nextInt(MAX_PLANETS);
+        for (int index = 0; index < numPlanets; index++) {
+            boolean habitable = random.nextBoolean();
+            int size = random.nextInt(3);
+            planets.add(new Planet(name + " " + ROMAN_NUMERALS[index], DEFAULT_PLANET_SIZE + size, habitable, this));
+        }
     }
 
     public void addTunnel (SpaceTunnel tunnel) {

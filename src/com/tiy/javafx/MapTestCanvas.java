@@ -42,7 +42,7 @@ public class MapTestCanvas extends Application {
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
         graphicsContext.setLineWidth(2);
 
-        StarSystemGraph sysGraph = new StarSystemGraph(new Point(0, 0));
+        StarSystemGraph sysGraph = new StarSystemGraph("4p_med_ring_map.txt");
 
         List<Label> starSystemLabels = new ArrayList<>();
 
